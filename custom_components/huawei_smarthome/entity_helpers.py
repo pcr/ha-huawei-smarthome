@@ -50,7 +50,7 @@ class AdapterEntityMixin:
         self._spec = spec
         self._attr_unique_id = f"{context.home_id}_{context.dev_id}_{spec.key}"
         self._attr_name = spec.name or spec.key
-        if spec.metadata.get("entity_category") in {"config", "diagnostic"}:
+        if spec.metadata and spec.metadata.get("entity_category") in {"config", "diagnostic"}:
             self._attr_entity_category = EntityCategory(spec.metadata.get("entity_category"))
         self._attr_has_entity_name = True
         self._attr_should_poll = False

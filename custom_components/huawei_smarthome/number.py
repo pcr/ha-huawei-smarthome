@@ -36,7 +36,7 @@ class HuaweiAdapterNumber(NumberEntity):
         self._attr_native_max_value = float(metadata["max"])
         self._attr_native_step = float(metadata.get("step", 1))
         self._attr_native_unit_of_measurement = metadata.get("unit")
-        if metadata.get("entity_category") in {"config", "diagnostic"}:
+        if metadata and metadata.get("entity_category") in {"config", "diagnostic"}:
             self._attr_entity_category = EntityCategory(metadata.get("entity_category"))
         self._attr_has_entity_name = True
         self._attr_should_poll = False

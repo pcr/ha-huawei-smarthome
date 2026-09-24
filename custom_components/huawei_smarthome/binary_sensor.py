@@ -35,7 +35,7 @@ class HuaweiAdapterBinarySensor(BinarySensorEntity):
         device_class = metadata.get("device_class")
         if device_class:
             self._attr_device_class = BinarySensorDeviceClass(device_class)
-        if metadata.get("entity_category") in {"config", "diagnostic"}:
+        if metadata and metadata.get("entity_category") in {"diagnostic"}:
             self._attr_entity_category = EntityCategory(metadata.get("entity_category"))
         self._attr_has_entity_name = True
         self._attr_should_poll = False

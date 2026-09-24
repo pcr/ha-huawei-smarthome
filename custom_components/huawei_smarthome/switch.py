@@ -33,7 +33,7 @@ class HuaweiAdapterSwitch(SwitchEntity):
         self._attr_name = spec.name or spec.key
         self._attr_has_entity_name = True
         self._attr_should_poll = False
-        if spec.metadata.get("entity_category") in {"config", "diagnostic"}:
+        if spec.metadata and spec.metadata.get("entity_category") in {"config", "diagnostic"}:
             self._attr_entity_category = EntityCategory(spec.metadata.get("entity_category"))
 
     @property
